@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <h1>User Login</h1>
+    <div class="form-group">
+      <input [(ngModel)]="email" type="email" placeholder="E-Mail" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <input [(ngModel)]="password" type="password" placeholder="Password" class="form-control"/>
+    </div>
+    <button (click)="fncUserLogin()" class="btn btn-success">Send</button>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
