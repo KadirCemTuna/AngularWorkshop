@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -33,9 +33,17 @@ export class HomeComponent implements OnInit {
       alert('Mail or Password is empty!');
     } else {
       if (this.email === 'ali@ali.com' && this.password === '12345') {
+        sessionStorage.setItem('user', this.email);
         console.log('Login Success!');
         this.router.navigate(['/dashboard', 103]);
       }
+    }
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent){
+    if (event.key === 'Enter'){
+      this.fncUserLogin();
     }
   }
 }
