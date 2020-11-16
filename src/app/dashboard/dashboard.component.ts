@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,11 +9,22 @@ import {ActivatedRoute} from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   pid = '';
-  constructor(private route: ActivatedRoute) { }
+  username = '';
+
+  constructor(private route: ActivatedRoute, private routerNavigate: Router) {
+  }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe( params => {
-    this.pid = params.get('id');
+
+    const session = sessionStorage.getItem('user');
+    if (session == null) {
+      this.routerNavigate.navigate(['home']);
+    } else {
+      this.username = atob(atob(session));
+    }
+
+    this.route.paramMap.subscribe(params => {
+      this.pid = params.get('id');
     });
   }
 

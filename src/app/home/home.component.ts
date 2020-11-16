@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
       alert('Mail or Password is empty!');
     } else {
       if (this.email === 'ali@ali.com' && this.password === '12345') {
-        sessionStorage.setItem('user', this.email);
+        sessionStorage.setItem('user', btoa(btoa(this.email)));
         console.log('Login Success!');
         this.router.navigate(['/dashboard', 103]);
       }
