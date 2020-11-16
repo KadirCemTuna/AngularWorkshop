@@ -22,4 +22,12 @@ export class MenuComponent implements OnInit {
     }
   }
 
+  fncLogOut(): void {
+    const answer = confirm('Are you sure?');
+    if (answer){
+      sessionStorage.removeItem('user');
+      this.routerNavigate.navigate(['home']);
+    }
+  }
+
 }
