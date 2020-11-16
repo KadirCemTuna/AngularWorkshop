@@ -9,20 +9,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   pid = '';
-  username = '';
 
   constructor(private route: ActivatedRoute, private routerNavigate: Router) {
   }
 
   ngOnInit(): void {
-
-    const session = sessionStorage.getItem('user');
-    if (session == null) {
-      this.routerNavigate.navigate(['home']);
-    } else {
-      this.username = atob(atob(session));
-    }
-
     this.route.paramMap.subscribe(params => {
       this.pid = params.get('id');
     });
