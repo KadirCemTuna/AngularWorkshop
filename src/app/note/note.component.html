@@ -27,11 +27,11 @@
       </thead>
       <tbody>
 
-      <tr>
-        <th>1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td><button class="btn btn-danger btn-sm btn-block">Delete</button></td>
+      <tr *ngFor="let item of noteArr; let i = index">
+        <th>{{item.title}}</th>
+        <td>{{item.detail}}</td>
+        <td>{{item.date}}</td>
+        <td><button (click)="fncNoteDelete(i)" class="btn btn-danger btn-sm btn-block">Delete</button></td>
       </tr>
 
       </tbody>
